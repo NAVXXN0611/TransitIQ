@@ -1,0 +1,21 @@
+package com.smartbus.controller;
+import com.smartbus.model.Bus;
+import com.smartbus.repository.BusRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/buses")
+@CrossOrigin(origins = "http://localhost:5173")
+public class BusController {
+    @Autowired
+    private BusRepository busRepository;
+    @GetMapping("/locations")
+    public List<Bus> getLiveBusLocations() {
+        return busRepository.findAll();
+    }
+}
